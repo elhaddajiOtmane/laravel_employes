@@ -21,10 +21,14 @@ Route::get('/', function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
+        
     })->name('home');
+
     Route::resource('employes', 'EmployesController');
+
     Route::get('employes/{id}/certificate', 'EmployesController@getWorkCertificate')
         ->name('work.certificate');
+
     Route::get('employes/{id}/vacation', 'EmployesController@vacationRequest')
         ->name('work.vacation');
 });
